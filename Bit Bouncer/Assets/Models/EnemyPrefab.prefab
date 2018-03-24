@@ -96,7 +96,8 @@ MonoBehaviour:
   speed: 1
   jumpSpeed: 8
   gravity: 15
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 224143200905263862, guid: b210107c61b814a81a6d3e7262becab1,
+    type: 2}
 --- !u!136 &136362809870231294
 CapsuleCollider:
   m_ObjectHideFlags: 1

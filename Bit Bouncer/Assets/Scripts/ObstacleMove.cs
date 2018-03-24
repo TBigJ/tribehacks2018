@@ -22,9 +22,18 @@ public class ObstacleMove : MonoBehaviour {
 
 		}
 		moveDirection.y -= gravity * Time.deltaTime;
-		controller.Move(moveDirection * Time.deltaTime);
+		controller.Move(Mathf.Clamp(moveDirection * Time.deltaTime, -11.4f, 10.75f));
 		SelfDestruct ();
 
+	}
+
+	void OnTriggerEnter(Collider other) {
+
+		if (other.CompareTag ("Player"))
+		{
+			Instantiate (explosionPrefab, transform.position, transform.rotation);
+			Destroy(gameObject);
+		}
 	}
 
 	void SelfDestruct()
