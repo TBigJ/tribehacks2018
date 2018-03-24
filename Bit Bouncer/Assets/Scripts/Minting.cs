@@ -6,15 +6,15 @@ public class Minting : MonoBehaviour {
 
 		public GameObject[] enemySpawn;
 		public Transform enemyPrefab;
-		public bool creating = true;
+		public float creating = 0;
 
 		void Update()
-		{
-		if (creating = true)
-			{
-				Debug.Log (creating);
+	{
+		creating += 0.125f;
+		if (creating == 10.0f) {
 				Instantiate(enemyPrefab, transform.position, transform.rotation);
-				creating = false;
-			}
+				creating = 0.0f;
+//			}
 		}
+	}
 }

@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update() {
 		CharacterController controller = GetComponent<CharacterController>();
 		if (controller.isGrounded) {
-			moveDirection = new Vector3(Input.GetAxis("Horizontal")*2.5f, 0, 0);
+			moveDirection = new Vector3(Input.GetAxis("Horizontal")*2.5f, Input.GetAxis("Vertical"), 0);
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
 			if (Input.GetButton ("longJump"))
@@ -36,6 +36,16 @@ public class PlayerMovement : MonoBehaviour {
 	void startLongJump()
 	{
 		moveDirection.y = longJump;
+	}
+
+	void OnTriggerEnter(Collider collided)
+	{
+		if (collided.CompareTag ("Enemy")) {
+
+//			Instantiate(explosionPrefab, transform.position, transform.rotation);
+//			Destroy (gameObject);
+
+		}
 	}
 
 }

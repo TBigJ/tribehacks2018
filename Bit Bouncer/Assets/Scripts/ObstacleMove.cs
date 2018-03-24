@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour {
 	
-	public float speed = 6.0F;
+	public float speed = 5.0F;
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
 	private Vector3 moveDirection = Vector3.zero;
+	public Transform explosionPrefab;
+
+
 	void Update() {
 		CharacterController controller = GetComponent<CharacterController>();
 		if (controller.isGrounded) {
@@ -20,6 +23,13 @@ public class ObstacleMove : MonoBehaviour {
 		}
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);
+		SelfDestruct ();
+
+	}
+
+	void SelfDestruct()
+	{
+		Destroy (gameObject, 7.5f);
 	}
 		
 }
