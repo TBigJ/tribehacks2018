@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -9,7 +10,16 @@ public class PlayerMovement : MonoBehaviour {
 	public float longJump = 10;
 	public float shortJump = 8;
 	public float gravity = 15;
+	public int money = 50;
+	public Text countText;
+	public Text loseText;
+
 	private Vector3 moveDirection = Vector3.zero;
+
+	void Start(){
+		SetCountText ();
+		loseText.text = " ";
+	}
 
 
 	void Update() {
@@ -38,13 +48,24 @@ public class PlayerMovement : MonoBehaviour {
 		moveDirection.y = longJump;
 	}
 
-	void OnTriggerEnter(Collider collided)
+	void OnTriggerEnter(Collider other) {
+		
+		if (other.CompareTag ("Enemy"))
+		{
+			money -= 5;
+			SetCountText ();
+			Destroy(other.gameObject);
+		}
+
+	}
+
+
+	void SetCountText ()
 	{
-		if (collided.CompareTag ("Enemy")) {
-
-//			Instantiate(explosionPrefab, transform.position, transform.rotation);
-//			Destroy (gameObject);
-
+		countText.text = "$: " + money.ToString ();
+		if (money <= 0)
+		{
+			loseText.text = "BANKRUPT";
 		}
 	}
 
