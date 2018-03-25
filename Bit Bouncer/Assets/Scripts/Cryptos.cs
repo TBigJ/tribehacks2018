@@ -16,7 +16,10 @@ public class Cryptos : MonoBehaviour {
 
 
 
-	// Update is called once per frame
+	void Start()
+	{
+		Destroy (gameObject, 3.0f);
+	}
 
 
 

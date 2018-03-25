@@ -27,6 +27,7 @@ public class Minting : MonoBehaviour {
 
 	void Start()
 	{
+		difficulty = int.Parse(StaticClass.CrossSceneInformation);
 		CryptoSelection ();
 	}
 
@@ -35,7 +36,6 @@ public class Minting : MonoBehaviour {
 		if (creating == 48.00f/difficulty) 
 		{
 			cryptholder = Cryptography (cryptoCoin);
-			Debug.Log (cryptholder);
 			if ((cryptholder) <= decrypto) 
 			{
 				decrypto = cryptholder;
@@ -52,6 +52,7 @@ public class Minting : MonoBehaviour {
 				}
 
 				cryptoCoin = cryList[coinCount];
+				Debug.Log (coinCount);
 
 			}
 
@@ -94,32 +95,10 @@ public class Minting : MonoBehaviour {
 
 		WebClient client = new WebClient ();
 		string content = client.DownloadString(url + crypto + urlstr);
-		Debug.Log ("content: " + content);
 		string result = content.Substring(7, content.Length -8);
-		Debug.Log (result);
 
 		Double.TryParse(result, out big_num);
 		return big_num;
 	}
-
-
-//	public static void Updating() {
-//		//		List<int> jList = new List<int>();
-//
-//		Thread newThread = new Thread (threading);
-//		newThread.Start();
-//
-//	}
-//
-//	private static void threading() { 
-//
-//		int futility = 0;
-//
-//		do { 
-//			iList.Add (Cryptography ("BTC"));
-//			Debug.Log (iList.RemoveAt (iList.Count - 1));
-//		} while (futility <= 50000);
-//
-//	}
 		
 }

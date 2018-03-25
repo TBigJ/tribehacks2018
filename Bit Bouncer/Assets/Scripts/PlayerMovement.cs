@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (money <= 0)
 		{
 			loseText.text = "BANKRUPT";
+			Application.Quit ();
 		}
 	}
 
