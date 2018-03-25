@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float speed = 1;
 	public float longJump = 10;
 	public float shortJump = 8;
-	public float gravity = 15;
+	public float gravity = 20;
 	public int money = 50;
 	public Text countText;
 	public Text loseText;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update() {
 		CharacterController controller = GetComponent<CharacterController>();
 		if (controller.isGrounded) {
-			moveDirection = new Vector3(Input.GetAxis("Horizontal")*2.5f, Input.GetAxis("Vertical"), 0);
+			moveDirection = new Vector3(Input.GetAxis("Horizontal")*2.5f, 0, 0);
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
 			if (Input.GetButton ("longJump"))
@@ -53,6 +53,13 @@ public class PlayerMovement : MonoBehaviour {
 		if (other.CompareTag ("Enemy"))
 		{
 			money -= 5;
+			SetCountText ();
+			Destroy(other.gameObject);
+		}
+
+		if (other.CompareTag ("Friend"))
+		{
+			money += 5;
 			SetCountText ();
 			Destroy(other.gameObject);
 		}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour {
 	
-	public float speed = 5.0F;
+	public float speed = 1.0F;
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
 	private Vector3 moveDirection = Vector3.zero;
@@ -22,21 +22,18 @@ public class ObstacleMove : MonoBehaviour {
 
 		}
 		moveDirection.y -= gravity * Time.deltaTime;
-		controller.Move(Mathf.Clamp(moveDirection * Time.deltaTime, -11.4f, 10.75f));
+		controller.Move(moveDirection * Time.deltaTime);
 		SelfDestruct ();
 
 	}
-
-	void OnTriggerEnter(Collider other) {
-
-		if (other.CompareTag ("Player"))
-		{
-			Instantiate (explosionPrefab, transform.position, transform.rotation);
-			Destroy(gameObject);
-		}
-	}
-
-	void SelfDestruct()
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player"))
+        {
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+    void SelfDestruct()
 	{
 		Destroy (gameObject, 7.5f);
 	}

@@ -96,7 +96,7 @@ MonoBehaviour:
   speed: 1
   jumpSpeed: 8
   gravity: 15
-  explosionPrefab: {fileID: 224143200905263862, guid: b210107c61b814a81a6d3e7262becab1,
+  explosionPrefab: {fileID: 4752982888949974, guid: 80b82f52721bf414d81e47d30769f848,
     type: 2}
 --- !u!136 &136362809870231294
 CapsuleCollider:
@@ -122,7 +122,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.55
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
